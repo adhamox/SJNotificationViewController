@@ -32,6 +32,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         // Custom initialization
 		showSpinner = NO;
 		[self setNotificationLevel:SJNotificationLevelMessage];
+		self.isVisible = NO;
+
     }
     return self;
 }
@@ -65,7 +67,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	
 	[self.view setFrame:CGRectMake(0, yPosition, self.view.frame.size.width, self.view.frame.size.height)];
 	[parentView addSubview:self.view];
-	
+	self.isVisible = YES;
 	[UIView animateWithDuration:SLIDE_DURATION
 					 animations:^{
 						 /* Slide the notification view up. */
@@ -89,6 +91,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 						 [self.view removeFromSuperview];
 					 }
 	];
+	self.isVisible = NO;
+
 }
 
 #pragma mark - Calculating position
